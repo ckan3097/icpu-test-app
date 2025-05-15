@@ -1,0 +1,106 @@
+.chatHolder {
+  display: grid;
+  grid-template-rows: 1fr 100px;
+  height: 100vh;
+  background: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.chatText {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+  overflow-y: auto;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  border-top: 1px solid #ddd;
+  padding: 1em;
+  background-color: #ffffff;
+}
+
+.textarea {
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+  font-size: 1.1em;
+  resize: none;
+  outline: none;
+}
+
+.button {
+  border: none;
+  border-radius: 0 8px 8px 0;
+  font-size: 1.2em;
+  color: #fff;
+  font-weight: bold;
+  background: linear-gradient(to right, #363795, #005c97);
+  cursor: pointer;
+}
+
+.button:hover {
+  background: linear-gradient(to right, #2b2e8a, #004b82);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.messageWrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75em;
+}
+
+.messageSentByMe {
+  justify-content: flex-end;
+}
+
+.messageSentByOthers {
+  justify-content: flex-start;
+}
+
+.colorSquare {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  background-color: #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1em;
+  color: #fff;
+}
+
+.message {
+  max-width: 60%;
+  padding: 0.75em 1em;
+  border-radius: 10px;
+  background-color: #eef5f8;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.openaiMessage {
+  max-width: 60%;
+  padding: 0.75em 1em;
+  border-radius: 10px;
+  background-color: #e2dff7;
+  font-style: italic;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.fetchingMessage {
+  font-size: 0.9em;
+  color: #555;
+  padding: 0.5em;
+  font-style: italic;
+}
