@@ -2,6 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useChannel } from "./AblyReactEffect";
 import styles from './AblyChatComponent.module.css';
 
+const SYSTEM_MESSAGE = {
+  role: "system",
+  content: `
+You are a helpful expert assistant participating in a collaborative group chat. Your responsibilities are:
+
+- Provide useful insights and background research when asked. Do tjis directly and answer questions without hesitation.
+- Act as a moderator, organiser or deligator when group discussions need structure. Assign task roles baed on your knowledge of members.
+- When users are working on university assignments or project tasks:
+  - Never write or complete full assignments or code solutions for them
+
+All users identify themselves by initials (e.g., "AJ:", "IS:"). Keep track of these you you can maintain group dynamic, and know who is talkiing.
+`,
+};
+
+
 const AblyChatComponent = () => {
 
   let inputBox = null;
@@ -74,22 +89,27 @@ const AblyChatComponent = () => {
     // Format full chat history for OpenAI
     const fullHistoryMessages = receivedMessages.slice(-200).map((msg) => ({
       role:
-        msg.data.initials === "AI" || msg.data.text.startsWith("OpenAI: ")
+        msg.data.initials === "AI" /*|| msg.data.text.startsWith("OpenAI: ")*/
           ? "assistant"
           : "user",
-      content: String(msg.data.text).replace(/^OpenAI:\s*/i, ""), // clean up AI prefix
+      content: 
+        msg.data.initials === "AI"
+          ? String(msg.data.text)
+          : `${msg.data.initials}: ${String(msg.data.text)}`, 
     }));
 
     // Add the latest user message
     fullHistoryMessages.push({
       role: "user",
-      content: JSON.stringify(triggerText),
+      content: `${String(triggerText.initials)}: ${String(triggerText.content)}`,
     });
+
+    const fullMessages = [SYSTEM_MESSAGE, ...fullHistoryMessages];
 
     const response = await fetch("/api/openai", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: fullHistoryMessages }),
+      body: JSON.stringify({ messages: fullMessages }),
     });
 
     if (!response.ok) {
@@ -101,7 +121,7 @@ const AblyChatComponent = () => {
     channel.publish({
       name: "chat-message",
       data: {
-        text: data.response, // No need to prefix "OpenAI:" here
+        text: data.response,  //.replace(/^\s*AI:\s*/i, ""),
         color: userColor,
         initials: "AI",
       },
@@ -118,7 +138,9 @@ const AblyChatComponent = () => {
 
   // Send a chat message and trigger OpenAI response if applicable.
 const sendChatMessage = async (messageText) => {
-  const userMessage = { role: 'user', content: messageText };
+  const userMessage = { role: 'user', 
+                        content: messageText,
+                        initials: userInitials};
   setChatHistory(prev => [...prev, userMessage]);
 
   channel.publish({
@@ -150,11 +172,10 @@ const sendChatMessage = async (messageText) => {
 
     // Render messages and handle OpenAI responses.
   const messages = receivedMessages.map((message, index) => {
-  const author = message.connectionId === ably.connection.id ? "me" : "other";
+  const author = message.data.initials === "AI" ? "ai" : (message.connectionId === ably.connection.id ? "me" : "other");
   const isGPTMessage = message.data.text.startsWith("openai: ");
   const textColor = getContrastTextColor(message.data.color);
   const className = `${isGPTMessage ? styles.openaiMessage : styles.message} ${author === "me" ? styles.messageSentByMe : styles.messageSentByOthers}`;
-
 
   // Set the font color based on the message author.
   const fontColor = author === "me" ? "#FFFFFF" : "#000000";
@@ -172,7 +193,7 @@ const sendChatMessage = async (messageText) => {
         className={styles.colorSquare}
         style={{ backgroundColor: message.data.color, color: textColor }}
       >
-        {author === "me" ? userInitials : message.data.initials}
+        {message.data.initials}
       </div>
       <span
         className={className}
@@ -185,10 +206,10 @@ const sendChatMessage = async (messageText) => {
   );
 });
 
-  // // Scroll to the most recent message.
-  // useEffect(() => {
-  //   messageEnd?.scrollIntoView({ behavior: "smooth" });
-  // });
+  // Scroll to the most recent message.
+  useEffect(() => {
+    messageEnd?.scrollIntoView({ behavior: "smooth" });
+  });
 
   // Render the chat interface.
   return (
