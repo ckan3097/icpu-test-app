@@ -1,7 +1,7 @@
 .chatHolder {
   display: grid;
   grid-template-rows: 1fr 100px;
-  height: 100vh;
+  height: calc(100vh - 200px);;
   background: #f9f9f9;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -44,7 +44,8 @@ export default function Home() {
         .container {
           display: grid;
           grid-template-rows: 1fr 100px;
-          min-height: 100vh;
+          height: calc(100% - 200px);
+          // min-height: 100vh;
           background-color: #eee;
         }
 
@@ -52,7 +53,7 @@ export default function Home() {
           display: grid;
           grid-template-rows: auto 1fr;
           width: calc(100% - 40px);
-          max-width: 900px;
+          max-width: 1200px;
           margin: 20px auto;
           border-radius: 10px;
           overflow: hidden;
