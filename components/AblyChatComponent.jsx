@@ -63,7 +63,7 @@ const AblyChatComponent = () => {
 
   // Determine if a message should trigger an OpenAI response.
   const isopenaiTrigger = (message) => {
-    return message.startsWith("@ai");
+    return message.includes("@ai");
   };
 
   // Send an OpenAI response.
