@@ -7,24 +7,32 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Realtime Chat App with Ably, NextJS and Vercel</title>
+        <title>ICPU test chat</title>
         <link rel="icon" href="https://static.ably.dev/motif-red.svg?nextjs-vercel" type="image/svg+xml" />
       </Head>
 
       <main>
-        <h1 className="title">Group Chat with OpenAI</h1>
+        <h1 className="title">Group Chat with AI</h1>
         <AblyChatComponent />
       </main>
 
       <footer>
         Powered by
         <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+          <img src="/vercel-logo.svg" alt="Vercel Logo" className="logo" />
         </a>
         and
         <a href="https://ably.com" rel="noopener noreferrer">
           <img src="/ably-logo.svg" alt="Ably Logo" className="logo ably" />
         </a>
+        &nbsp;&nbsp;&nbsp;&nbsp; Based on &nbsp;
+        <a href="https://ably.com/blog/realtime-chat-app-nextjs-vercel" rel="noopener noreferrer">
+          (Radar, 2025)
+        </a>
+        &nbsp; and &nbsp;
+        <a href="https://ably.com/blog/group-chat" rel="noopener noreferrer">
+          (Kiss, 2023)
+        </a>.
         <a href="https://github.com/ably-labs/NextJS-chat-app" className="github-corner" aria-label="View source on GitHub">
           <svg width="80" height="80" viewBox="0 0 250 250" className="svg" aria-hidden="true">
             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
