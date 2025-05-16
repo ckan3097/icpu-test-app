@@ -127,7 +127,7 @@ const sendChatMessage = async (messageText) => {
   });
 
   if (isopenaiTrigger(messageText)) {
-    await sendopenaiResponse([...chatHistory, userMessage]);
+    await sendopenaiResponse(userMessage);
   }
 
   setMessageText("");
@@ -185,10 +185,10 @@ const sendChatMessage = async (messageText) => {
   );
 });
 
-  // Scroll to the most recent message.
-  useEffect(() => {
-    messageEnd?.scrollIntoView({ behavior: "smooth" });
-  });
+  // // Scroll to the most recent message.
+  // useEffect(() => {
+  //   messageEnd?.scrollIntoView({ behavior: "smooth" });
+  // });
 
   // Render the chat interface.
   return (
