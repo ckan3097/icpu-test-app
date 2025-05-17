@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useChannel } from "./AblyReactEffect";
 import styles from './AblyChatComponent.module.css';
+import ReactMarkdown from "react-markdown";
 
 const SYSTEM_MESSAGE = {
   role: "system",
@@ -195,13 +196,15 @@ const sendChatMessage = async (messageText) => {
       >
         {message.data.initials}
       </div>
-      <span
-        className={className}
-        data-author={author}
-        style={{ color: fontColor }}
-      >
-        {message.data.text}
-      </span>
+      <div
+          className={className}
+          data-author={author}
+          style={{ color: fontColor }}
+        >
+          <div className={styles.markdown}>
+            <ReactMarkdown>{message.data.text}</ReactMarkdown>
+          </div>
+        </div>
     </div>
   );
 });
