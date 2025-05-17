@@ -32,7 +32,11 @@ export default function Home() {
         &nbsp; and &nbsp;
         <a href="https://ably.com/blog/group-chat" rel="noopener noreferrer">
           (Kiss, 2023)
-        </a>.
+        </a>
+        &nbsp;
+        <a href="https://github.com/ably-labs/NextJS-chat-app" target="_blank" rel="noopener noreferrer">
+          <img src="/github.svg" alt="Github Logo" width="20"/>
+        </a>
         <a href="https://github.com/ably-labs/NextJS-chat-app" className="github-corner" aria-label="View source on GitHub">
           <svg width="80" height="80" viewBox="0 0 250 250" className="svg" aria-hidden="true">
             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
