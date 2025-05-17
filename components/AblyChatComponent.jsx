@@ -163,12 +163,11 @@ const sendChatMessage = async (messageText) => {
   };
 
   // Handle the Enter key and send a chat message.
-  const handleKeyUp = (event) => {
-    if (event.key !== 'Enter' || messageTextIsEmpty) {
-      return;
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey && !messageTextIsEmpty) {
+      event.preventDefault();
+      sendChatMessage(messageText);
     }
-    sendChatMessage(messageText);
-    event.preventDefault();
   };
 
     // Render messages and handle OpenAI responses.
@@ -232,7 +231,7 @@ const sendChatMessage = async (messageText) => {
           value={messageText}
           placeholder="Type a message!"
           onChange={e => setMessageText(e.target.value)}
-          onKeyUp={handleKeyUp}
+          onKeyDown={handleKeyDown}
           className={styles.textarea}
         ></textarea>
         <button type="submit" className={styles.button} disabled={messageTextIsEmpty}>Send</button>
