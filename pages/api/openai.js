@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     const completion = await openai.chat.completions.create({
       model: "gpt-4.1-nano",
       messages: messages,
-      max_tokens: 100,
+      max_tokens: 500,
     });
 
     const response = completion.choices[0].message.content;
