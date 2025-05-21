@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 16 16"
+   fill="#000000"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="github.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.71417785"
+     inkscape:cx="399.76037"
+     inkscape:cy="357.05392"
+     inkscape:window-width="1920"
+     inkscape:window-height="992"
+     inkscape:window-x="-8"
+     inkscape:window-y="1432"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     d="m 9.8980855,15.458541 c 0.089894,-0.0403 0.1329305,-0.16434 0.1329305,-0.290533 v -2.201992 c 0,-0.734 -0.2450085,-1.223032 -0.5380082,-1.467032 1.7599982,-0.195999 3.6200002,-0.832003 3.6200002,-3.9149996 0.0041,-0.7968909 -0.29311,-1.5658929 -0.831992,-2.1529688 0.049,-0.1959998 0.342968,-1.0270245 -0.09703,-2.1040234 0,0 -0.684993,-0.1950068 -2.2019918,0.8319922 -0.6359994,-0.1469999 -1.3209773,-0.245 -2.0059766,-0.245 -0.6849993,0 -1.3710319,0.049 -2.0070312,0.245 C 4.4529859,3.1309854 3.7680078,3.3269922 3.7680078,3.3269922 3.3270083,4.4039911 3.62,5.2349923 3.67,5.3819922 3.1310005,5.9689916 2.8380078,6.6550009 2.8380078,7.535 c 0,3.082997 1.8589783,3.767985 3.6209766,3.963984 C 6.2629846,11.694984 6.018,12.037001 5.97,12.575 5.5290004,12.77 4.4039993,13.112999 3.67,11.89 c 0,0 -0.4409852,-0.782992 -1.2239844,-0.831992 0,0 -0.7820071,-1.5e-5 -0.048008,0.488984 0,0 0.5379769,0.245001 0.8809766,1.175 0,0 0.4890022,1.566015 2.69,1.076016 v 1.37 c 0,0.0931 0.00756,0.252344 0.091705,0.281872 z"
+     style="clip-rule:evenodd;fill-rule:evenodd"
+     id="path3"
+     sodipodi:nodetypes="csscccccscccscccccccscc" />
+</svg>
