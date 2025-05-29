@@ -137,7 +137,7 @@ const AblyChatComponent = () => {
     channel.publish({
       name: "chat-message",
       data: {
-        text: data.response,
+        text: data.response.replace(/^([A-Z]{2,3}|@?AI):\s+/i, ''),
         color: AI_COLOR,
         initials: "AI",
       },
