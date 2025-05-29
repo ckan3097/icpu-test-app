@@ -3,6 +3,7 @@ import { useChannel } from "./AblyReactEffect";
 import styles from './AblyChatComponent.module.css';
 import ReactMarkdown from "react-markdown";
 
+// Set the system message for the AI agent
 const SYSTEM_MESSAGE = {
   role: "system",
   content: `You are a helpful, expert assistant participating in a collaborative group chat for a university-led final-year group unit. Your role is to assist with research, support effective collaboration, encourage academic integrity, and facilitate productive teamwork across an interdisciplinary group. Your responsibilities include:
@@ -28,13 +29,16 @@ const SYSTEM_MESSAGE = {
 Your goal is to help the team build practical skills in communication, delegation, research, and collaboration, without compromising academic integrity or the intent of the learning experience.`,
 };
 
+// Set what text triggers an AI response
+const AI_HANDLE = "@ai"
+
 
 const AblyChatComponent = () => {
 
   let inputBox = null;
   let messageEnd = null;
 
-   // State for user input, received messages, and OpenAI response fetching status.
+  // State for user input, received messages, and OpenAI response fetching status.
   const [messageText, setMessageText] = useState("");
   const [receivedMessages, setMessages] = useState([]);
   const [fetchingopenaiResponse, setFetchingopenaiResponse] = useState(false);
@@ -90,7 +94,7 @@ const AblyChatComponent = () => {
 
   // Determine if a message should trigger an OpenAI response.
   const isopenaiTrigger = (message) => {
-    return message.includes("@ai");
+    return message.includes(AI_HANDLE); 
   };
 
   // Send an OpenAI response.
@@ -116,8 +120,10 @@ const AblyChatComponent = () => {
       content: `${String(triggerText.initials)}: ${String(triggerText.content)}`,
     });
 
+    // Combine message sent to AI to include the system message and message history
     const fullMessages = [SYSTEM_MESSAGE, ...fullHistoryMessages];
 
+    // Get response
     const response = await fetch("/api/openai", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -128,8 +134,8 @@ const AblyChatComponent = () => {
       throw new Error(`API request failed with status ${response.status}`);
     }
 
+    // Output that AI response
     const data = await response.json();
-
     channel.publish({
       name: "chat-message",
       data: {
@@ -138,42 +144,42 @@ const AblyChatComponent = () => {
         initials: "AI",
       },
     });
-  } catch (error) {
-    console.error("Error fetching OpenAI response:", error);
-  } finally {
-    setFetchingopenaiResponse(false);
-  }
-};
-
-
+    } catch (error) {
+      console.error("Error fetching OpenAI response:", error);
+    } finally {
+      setFetchingopenaiResponse(false);
+    }
+  };
 
 
   // Send a chat message and trigger OpenAI response if applicable.
-const sendChatMessage = async (messageText) => {
-  const userMessage = { role: 'user', 
-                        content: messageText,
-                        initials: userInitials};
-  setChatHistory(prev => [...prev, userMessage]);
+  const sendChatMessage = async (messageText) => {
+    const userMessage = { role: 'user', 
+                          content: messageText,
+                          initials: userInitials};
+    setChatHistory(prev => [...prev, userMessage]);
 
-  channel.publish({
-    name: "chat-message",
-    data: { text: messageText, color: userColor, initials: userInitials },
-  });
+    channel.publish({
+      name: "chat-message",
+      data: { text: messageText, color: userColor, initials: userInitials },
+    });
 
-  if (isopenaiTrigger(messageText)) {
-    await sendopenaiResponse(userMessage);
-  }
+    // Send and await AI response if triggered
+    if (isopenaiTrigger(messageText)) {
+      await sendopenaiResponse(userMessage);
+    }
 
-  setMessageText("");
-};
+    // Clear users message text
+    setMessageText("");
+  };
 
-// Handle form submission and send a chat message.
+  // Send message when send button clicked.
   const handleFormSubmission = (event) => {
     event.preventDefault();
     sendChatMessage(messageText);
   };
 
-  // Handle the Enter key and send a chat message.
+  // Send message on enter, but not on shift+enter.
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' && !event.shiftKey && !messageTextIsEmpty) {
       event.preventDefault();
@@ -181,7 +187,7 @@ const sendChatMessage = async (messageText) => {
     }
   };
 
-    // Render messages and handle OpenAI responses.
+  // Render messages and handle OpenAI responses.
   const messages = receivedMessages.map((message, index) => {
   const author = message.data.initials === "AI" ? "ai" : (message.connectionId === ably.connection.id ? "me" : "other");
   const isGPTMessage = message.data.text.startsWith("openai: ");
