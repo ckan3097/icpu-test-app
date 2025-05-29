@@ -72,9 +72,9 @@ export default function Home() {
           height: 100px;
           margin: 0;
           color: white;
-          background: #005C97;
-          background: -webkit-linear-gradient(to right, #363795, #005C97);
-          background: linear-gradient(to right, #363795, #005C97);
+          background: #02014F;
+          background: -webkit-linear-gradient(to right, #02014F, #3c1d81);
+          background: linear-gradient(to right, #02014F, #3c1d81);
         }
 
         footer {
@@ -93,7 +93,7 @@ export default function Home() {
         }
 
         .svg { 
-          fill:#005C97; 
+          fill:#02014F; 
           color:#fff; 
           position: absolute; 
           top: 0; 
@@ -143,7 +143,7 @@ export default function Home() {
         }
 
         [data-author="me"] {
-          background: linear-gradient(to right, #363795, #005C97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          background: linear-gradient(to right, #02014F, #3c1d81); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
           color: white;
           align-self: flex-end;
           border-bottom-right-radius: 0!important;

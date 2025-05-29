@@ -37,12 +37,12 @@
   font-size: 1.2em;
   color: #fff;
   font-weight: bold;
-  background: linear-gradient(to right, #363795, #005c97);
+  background: linear-gradient(to right, #02014F, #3c1d81);
   cursor: pointer;
 }
 
 .button:hover {
-  background: linear-gradient(to right, #2b2e8a, #004b82);
+  background: linear-gradient(to right, #050434, #23104d);
 }
 
 .button:disabled {
