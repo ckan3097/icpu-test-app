@@ -3,7 +3,9 @@ import { useChannel } from "./AblyReactEffect";
 import styles from './AblyChatComponent.module.css';
 import ReactMarkdown from "react-markdown";
 
-// Set the system message for the AI agent
+// Set AI related constants
+const AI_HANDLE = "@ai"
+const AI_COLOR = "#000000"
 const SYSTEM_MESSAGE = {
   role: "system",
   content: `You are a helpful, expert assistant participating in a collaborative group chat for a university-led final-year group unit. Your role is to assist with research, support effective collaboration, encourage academic integrity, and facilitate productive teamwork across an interdisciplinary group. Your responsibilities include:
@@ -28,10 +30,6 @@ const SYSTEM_MESSAGE = {
 
 Your goal is to help the team build practical skills in communication, delegation, research, and collaboration, without compromising academic integrity or the intent of the learning experience.`,
 };
-
-// Set what text triggers an AI response
-const AI_HANDLE = "@ai"
-const aiColor = '#000000'
 
 const AblyChatComponent = () => {
 
@@ -105,7 +103,7 @@ const AblyChatComponent = () => {
     // Format full chat history for OpenAI
     const fullHistoryMessages = receivedMessages.slice(-200).map((msg) => ({
       role:
-        msg.data.initials === "AI" /*|| msg.data.text.startsWith("OpenAI: ")*/
+        msg.data.initials === "AI" 
           ? "assistant"
           : "user",
       content: 
@@ -139,8 +137,8 @@ const AblyChatComponent = () => {
     channel.publish({
       name: "chat-message",
       data: {
-        text: data.response,  //.replace(/^\s*AI:\s*/i, ""),
-        color: aiColor,
+        text: data.response,
+        color: AI_COLOR,
         initials: "AI",
       },
     });
