@@ -31,7 +31,7 @@ Your goal is to help the team build practical skills in communication, delegatio
 
 // Set what text triggers an AI response
 const AI_HANDLE = "@ai"
-
+const aiColor = '#000000'
 
 const AblyChatComponent = () => {
 
@@ -140,7 +140,7 @@ const AblyChatComponent = () => {
       name: "chat-message",
       data: {
         text: data.response,  //.replace(/^\s*AI:\s*/i, ""),
-        color: userColor,
+        color: aiColor,
         initials: "AI",
       },
     });
