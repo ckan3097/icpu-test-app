@@ -3,7 +3,7 @@ import { useChannel } from "./AblyReactEffect";
 import styles from './AblyChatComponent.module.css';
 import ReactMarkdown from "react-markdown";
 
-// Set AI related constants
+// Set AI related constants -> set the model in pages/api/openai.js
 const AI_HANDLE = "@ai"
 const AI_COLOR = "#000000"
 const SYSTEM_MESSAGE = {

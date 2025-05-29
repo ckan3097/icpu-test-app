@@ -1,7 +1,22 @@
+**Pilot app for technical feasability of group chat with AI for 4000-level ICPU: Microsoft and The University of Sydney 'Ready or Not – Launching Graduates into the Workforce in the Age of Artificial Intelligence'**
+
+This is an app to facilitate group chats with an AI agent present that can identify and respond to different group members with the context and background information of the whole group chat. This is mainly focused on the scenario of university group work, allowing group members to seamlessly interact with each other and include an AI agent in the team.
+
+I created this app based on the tutorials:
+- [Building a realtime chat app with Next.js and Vercel](https://ably.com/blog/realtime-chat-app-nextjs-vercel) (Ably, 2025)
+- [Group chat app with OpenAI's GPT](https://ably.com/blog/group-chat)(Stephen Kiss, 2023) 
+
+As a proof of technical feasability for my group's final year interdisciplinary [industry and community project](https://www.sydney.edu.au/students/industry-and-community-projects/4000-level-projects.html).
+
+I might keep working on it to make it fancier at some point.
+
+You will need to add a `.env` file with your API keys `ABLY_API_KEY=` and `OPENAI_API_KEY=` to use this app locally (you can pretend to be in a group by opening multiple windows), or deploy your own version so you can actually chat with other people.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
-
 First, run the development server:
 
 ```bash
@@ -15,8 +30,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
