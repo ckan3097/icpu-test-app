@@ -4,7 +4,7 @@ This is an app to facilitate group chats with an AI agent present that can ident
 
 I created this app based on the tutorials:
 - [Building a realtime chat app with Next.js and Vercel](https://ably.com/blog/realtime-chat-app-nextjs-vercel) (Ably, 2025)
-- [Group chat app with OpenAI's GPT](https://ably.com/blog/group-chat)(Stephen Kiss, 2023) 
+- [Group chat app with OpenAI's GPT](https://ably.com/blog/group-chat) (Stephen Kiss, 2023) 
 
 As a proof of technical feasability for my group's final year interdisciplinary [industry and community project](https://www.sydney.edu.au/students/industry-and-community-projects/4000-level-projects.html).
 
